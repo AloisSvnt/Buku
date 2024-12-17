@@ -1,5 +1,9 @@
 # Documentation
 
+[Doc Adonis](https://docs.adonisjs.com/guides/preface/introduction)
+[Doc Tailwind](https://tailwindcss.com/docs/installation)
+[Doc DaisyUI](https://daisyui.com/components/)
+
 ## Install
 
 ```bash
