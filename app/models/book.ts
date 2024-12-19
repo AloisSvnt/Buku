@@ -1,5 +1,10 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@adonisjs/lucid/orm'
+import { BaseModel, column, belongsTo, hasMany } from '@adonisjs/lucid/orm'
+import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
+
+import Category from '#models/category'
+import Author from '#models/author'
+import Review from '#models/review'
 
 export default class Book extends BaseModel {
   @column({ isPrimary: true })
@@ -12,13 +17,19 @@ export default class Book extends BaseModel {
   declare description: string
 
   @column()
-  declare category: string // TODO: add pivot table for categories
+  declare categoryId: number
+
+  @belongsTo(() => Category)
+  declare category: BelongsTo<typeof Category>
 
   @column()
-  declare author: string // TODO: add pivot table for authors
+  declare authorId: number
 
-  @column()
-  declare reviews: string // TODO: add pivot table for reviews
+  @belongsTo(() => Author)
+  declare author: BelongsTo<typeof Author>
+
+  @hasMany(() => Review)
+  declare reviews: HasMany<typeof Review>
 
   @column()
   declare isNew : boolean
