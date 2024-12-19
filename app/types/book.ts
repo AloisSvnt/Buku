@@ -1,4 +1,4 @@
-import { DateTime } from "luxon"
+import { DateTime } from 'luxon'
 
 export type Book = {
   id: number
@@ -11,6 +11,7 @@ export type Book = {
   isPopular: boolean
   isRecommended: boolean
   isOnSale: boolean
+  slug: string
   createdAt: DateTime
   updatedAt: DateTime
 }

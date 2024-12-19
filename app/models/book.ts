@@ -32,7 +32,7 @@ export default class Book extends BaseModel {
   declare reviews: HasMany<typeof Review>
 
   @column()
-  declare isNew : boolean
+  declare isNew: boolean
 
   @column()
   declare isPopular: boolean
@@ -42,6 +42,9 @@ export default class Book extends BaseModel {
 
   @column()
   declare isOnSale: boolean
+
+  @column()
+  declare slug: string
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
