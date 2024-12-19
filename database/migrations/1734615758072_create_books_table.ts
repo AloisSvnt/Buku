@@ -1,4 +1,3 @@
-import Category from '#models/category'
 import { BaseSchema } from '@adonisjs/lucid/schema'
 
 export default class extends BaseSchema {
@@ -9,8 +8,8 @@ export default class extends BaseSchema {
       table.increments('id')
       table.string('title').notNullable()
       table.text('description').notNullable()
-      table.integer('category_id').unsigned().references('id').inTable('categories').notNullable()
-      table.integer('author_id').unsigned().references('id').inTable('authors').notNullable()
+      table.integer('category_id').unsigned().references('id').inTable('categories').onDelete('CASCADE')
+      table.integer('author_id').unsigned().references('id').inTable('authors').onDelete('CASCADE')
       table.boolean('is_new').defaultTo(false)
       table.boolean('is_popular').defaultTo(false)
       table.boolean('is_recommended').defaultTo(false)
