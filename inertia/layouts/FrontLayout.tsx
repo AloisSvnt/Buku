@@ -3,7 +3,7 @@ import HeaderFront from "~/components/headers/HeaderFront";
 
 function FrontLayout( children: React.ReactNode) {
   return (
-    <div>
+    <>
       <HeaderFront />
 
       <main>
@@ -11,7 +11,7 @@ function FrontLayout( children: React.ReactNode) {
       </main>
 
       <FooterFront />
-    </div>
+    </>
   );
 }
 
