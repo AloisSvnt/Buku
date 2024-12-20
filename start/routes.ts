@@ -12,6 +12,8 @@ import { middleware } from './kernel.js'
 
 const BookController = () => import('#controllers/book_controller')
 const SessionController = () => import('#controllers/Auth/session_controller')
+const AdminBookController = () => import('#controllers/Admin/book_controller')
+// const DashBoardController = () => import('#controllers/Admin/dashboard_controller')
 
 router.on('/').renderInertia('home')
 
@@ -24,8 +26,8 @@ router
 
     router
       .group(() => {
-        router.get('', [BookController, 'index']).as('index')
-        router.get('/:slug', [BookController, 'show']).as('show')
+        router.get('', [BookController, 'index']).as('book.index')
+        router.get('/:slug', [BookController, 'show']).as('book.show')
       }
     )
     .prefix('books')
@@ -35,7 +37,7 @@ router
 
 router
   .group(() => {
-    router.post('/logout', [SessionController, 'logout']).as('logout')
+    router.get('/logout', [SessionController, 'logout']).as('logout')
   })
   .use(middleware.auth())
 
@@ -47,12 +49,15 @@ router
 
   router.group(() => {
 
+    // router.get('', [DashBoardController, 'index']).as('admin.dashboard.index')
+
     router.group(() => {
-      router.get('/create', [BookController, 'create']).as('create')
-      router.post('', [BookController, 'store']).as('store')
-      router.get('/:slug/edit', [BookController, 'edit']).as('edit')
-      router.put('/:slug', [BookController, 'update']).as('update')
-      router.delete('/:slug', [BookController, 'destroy']).as('destroy')
+      router.get('', [AdminBookController, 'index']).as('admin.book.index')
+      router.get('/create', [AdminBookController, 'create']).as('admin.book.create')
+      router.post('', [AdminBookController, 'store']).as('admin.book.store')
+      router.get('/:slug/edit', [AdminBookController, 'edit']).as('admin.book.edit')
+      router.put('/:slug', [AdminBookController, 'update']).as('admin.book.update')
+      router.delete('/:slug', [AdminBookController, 'destroy']).as('admin.book.destroy')
     })
     .prefix('books')
 
