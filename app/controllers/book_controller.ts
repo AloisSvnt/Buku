@@ -7,7 +7,7 @@ export default class BookController {
    * Display a list of resource
    */
   async index({ inertia }: HttpContext) {
-    const books = await Book.all()
+    const books = await Book.findManyBy('is_on_sale', true)
     return inertia.render('Book/Index', { books })
   }
 
@@ -53,7 +53,7 @@ export default class BookController {
    * Show individual record
    */
   async show({ params, response, inertia }: HttpContext) {
-    const book = await Book.findBy('slug', params.slug)
+    const book = await Book.findManyBy({'slug': params.slug, 'is_on_sale': true})
     return book
       ? inertia.render('Book/Show', { book })
       : response.status(404).send('Book not found')
