@@ -26,6 +26,11 @@ export default class SessionController {
     try {
       const user = await User.verifyCredentials(email, password)
       await auth.use('web').login(user)
+      if(user.isAdmin) {
+        console.log('Admin')
+        session.flash({success: `You are logged in as ${user.fullName}.`})
+        return response.redirect('/admin/dashboard')
+      }
       session.flash({success: 'You are logged in.'})
       return response.redirect('/')
 
