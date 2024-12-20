@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, belongsTo, hasMany } from '@adonisjs/lucid/orm'
+import { scope, BaseModel, column, belongsTo, hasMany } from '@adonisjs/lucid/orm'
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
 
 import Category from '#models/category'
@@ -7,6 +7,15 @@ import Author from '#models/author'
 import Review from '#models/review'
 
 export default class Book extends BaseModel {
+  
+  static existingTitle = scope((query, title: string) => {
+    query.where('title', 'like', title)
+  })
+
+  static existingSlug = scope((query, slug: string) => {
+    query.where('slug', 'like', `${slug}%`)
+  })
+
   @column({ isPrimary: true })
   declare id: number
 
