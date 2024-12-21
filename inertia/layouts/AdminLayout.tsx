@@ -3,10 +3,10 @@ import FooterAdmin from "~/components/footers/FooterAdmin";
 
 function AdminLayout(children: React.ReactNode) {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <HeaderAdmin />
 
-      <main>
+      <main className='flex flex-1'>
         {children}
       </main>
       
