@@ -6,7 +6,7 @@ export default class AdminMiddleware {
   /**
    * The URL to redirect to, when authentication fails
    */
-  redirectTo = '/login'
+  redirectTo = '/admin/login'
 
   async handle(
     ctx: HttpContext,
