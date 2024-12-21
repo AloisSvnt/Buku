@@ -9,11 +9,14 @@ function HeaderAdmin() {
     <header>
       <div className="navbar">
         <div className="flex-1">
-          <Link href="/" className="btn btn-ghost text-xl">Adonis JS</Link>
+          <Link href="/admin/dashboard" className="btn btn-ghost text-xl">Adonis JS</Link>
         </div>
         <div className="flex-none gap-2 hidden lg:flex">
         <p>Welcome {user.fullName}</p>
           <ul className="menu menu-horizontal px-1 gap-2">
+            <li>
+              <Link className='btn btn-ghost' href="/">Front</Link>
+            </li>
             <li>
               <Link className='btn btn-ghost' href="/logout">Logout</Link>  
             </li>
