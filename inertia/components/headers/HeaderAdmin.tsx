@@ -1,8 +1,26 @@
+import { Link, usePage } from '@inertiajs/react';
+
+import type { User } from '#types/user';
+
 function HeaderAdmin() {
+  const { user } = usePage<{ user: User }>().props;
+
   return (
-    <div>
-      
-    </div>
+    <header>
+      <div className="navbar">
+        <div className="flex-1">
+          <Link href="/" className="btn btn-ghost text-xl">Adonis JS</Link>
+        </div>
+        <div className="flex-none gap-2 hidden lg:flex">
+        <p>Welcome {user.fullName}</p>
+          <ul className="menu menu-horizontal px-1 gap-2">
+            <li>
+              <Link className='btn btn-ghost' href="/logout">Logout</Link>  
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
   );
 }
 
