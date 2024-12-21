@@ -6,7 +6,8 @@ function AdminLayout(children: React.ReactNode) {
     <div className="flex flex-col min-h-screen">
       <HeaderAdmin />
 
-      <main className='flex flex-1'>
+      <main className='flex-1 grid grid-cols-[300px_minmax(900px,_1fr)]'>
+        <div className="pl-2">left</div>
         {children}
       </main>
       
