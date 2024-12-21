@@ -1,12 +1,11 @@
 /*
-|--------------------------------------------------------------------------
-| Routes file
-|--------------------------------------------------------------------------
-|
-| The routes file is used for defining the HTTP routes.
-|
-*/
-
+ *|--------------------------------------------------------------------------*
+ *| Routes file*
+ *|--------------------------------------------------------------------------*
+ *|*
+ *| The routes file is used for defining the HTTP routes.*
+ *|*
+ */
 import router from '@adonisjs/core/services/router'
 import { middleware } from './kernel.js'
 
@@ -23,7 +22,6 @@ router
     router.post('/register', [SessionController, 'register']).as('register')
     router.get('/login', [SessionController, 'showLogin']).as('showLogin')
     router.post('/login', [SessionController, 'login']).as('login')
-
     router
       .group(() => {
         router.get('', [BookController, 'index']).as('book.index')
@@ -39,15 +37,26 @@ router
   })
   .use(middleware.auth())
 
+router.get('/admin', async ({ response, auth }) => {
+  if (await auth.check()) {
+    return response.redirect('/admin/dashboard')
+  }
+  return response.redirect('/admin/login')
+})
+
 router
   .group(() => {
-    router.get('', [SessionController, 'showLogin']).as('showAdminLogin')
-    router.post('', [SessionController, 'login']).as('adminLogin')
+    router.get('/login', [SessionController, 'showLogin']).as('showAdminLogin')
+    router.post('/login', [SessionController, 'login']).as('adminLogin')
+  })
+  .prefix('admin')
+  .use(middleware.guest())
 
+router
+  .group(() => {
     router
       .group(() => {
         router.get('', [DashBoardController, 'index']).as('admin.dashboard.index')
-
         router
           .group(() => {
             router.get('', [AdminBookController, 'index']).as('admin.book.index')
