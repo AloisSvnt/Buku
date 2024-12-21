@@ -14,7 +14,7 @@ const SessionController = () => import('#controllers/Auth/session_controller')
 const AdminBookController = () => import('#controllers/Admin/book_controller')
 const DashBoardController = () => import('#controllers/Admin/dashboard_controller')
 
-router.on('/').renderInertia('home')
+router.on('/').renderInertia('home').use(middleware.global())
 
 router
   .group(() => {
