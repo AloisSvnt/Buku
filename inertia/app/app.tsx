@@ -19,8 +19,8 @@ createInertiaApp({
   resolve: async (name: string) => {
     const pages = import.meta.glob('../pages/**/*.tsx', { eager: true }) as Record<string, { default: any }>;
     const page = await resolvePageComponent(`../pages/${name}.tsx`, pages) as { default: any };
-    
-    name.startsWith('admin') ? 
+
+    name.startsWith('Admin') ? 
       page.default.layout = AdminLayout : 
       page.default.layout = FrontLayout;
 
