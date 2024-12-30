@@ -8,14 +8,14 @@ export default class BookController {
    */
   async index({inertia}: HttpContext) {
     const books = await Book.all()
-    return inertia.render('Admin/Book/Index', {books})
+    return inertia.render('Admin/Books/Index', {books})
   }
 
   /**
    * Display form to create a new record
    */
   async create({inertia}: HttpContext) {
-    return inertia.render('Admin/Book/Create')
+    return inertia.render('Admin/Books/Create')
   }
 
   /**
@@ -52,7 +52,7 @@ export default class BookController {
   async show({ params, response, inertia }: HttpContext) {
     const book = await Book.findBy('slug', params.slug)
     return book
-      ? inertia.render('Admin/Book/Show', { book })
+      ? inertia.render('Admin/Books/Show', { book })
       : response.status(404).send('Book not found')
   }
 
@@ -62,7 +62,7 @@ export default class BookController {
   async edit({ params, response, inertia }: HttpContext) {
     const book = await Book.findBy('slug', params.slug)
     return book
-      ? inertia.render('Admin/Book/Edit', { book })
+      ? inertia.render('Admin/Books/Edit', { book })
       : response.status(404).send('Book not found')
   }
 
