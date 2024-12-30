@@ -1,7 +1,7 @@
 function Index(){
     return (
         <div className="flex-grow flex justify-center">
-            test
+            Dashboard
         </div>
     );
 };
