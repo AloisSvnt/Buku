@@ -57,6 +57,7 @@ router
     router
       .group(() => {
         router.get('', [DashBoardController, 'index']).as('admin.dashboard.index')
+        .prefix('dashboard')
         router
           .group(() => {
             router.get('', [AdminBookController, 'index']).as('admin.book.index')
@@ -68,7 +69,6 @@ router
           })
           .prefix('books')
       })
-      .prefix('dashboard')
   })
   .prefix('admin')
   .use(middleware.admin())
