@@ -7,11 +7,11 @@ function HeaderAdmin() {
 
   return (
     <header>
-      <div className="navbar">
+      <div className="navbar max-h-[4rem] bg-base-100 shadow-lg">
         <div className="flex-1">
           <Link href="/admin/dashboard" className="btn btn-ghost text-xl">Adonis JS</Link>
         </div>
-        <div className="flex-none gap-2 hidden lg:flex">
+        <div className="flex-none gap-2 lg:flex">
         <p>Welcome {user.fullName}</p>
           <ul className="menu menu-horizontal px-1 gap-2">
             <li>
