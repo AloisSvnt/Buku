@@ -5,6 +5,16 @@ import HeaderAdmin from "~/components/headers/HeaderAdmin";
 import FooterAdmin from "~/components/footers/FooterAdmin";
 
 function AdminLayout(children: React.ReactNode) {
+
+  const linkList = [
+    { href: "/admin/dashboard", icon: "mdi:view-dashboard-outline", label: "Dashboard", separate:true },
+    { href: "/admin/medias", icon: "mdi:image", label: "Medias", separate:true },
+    { href: "/admin/books", icon: "mdi:bookshelf", label: "Books", separate:true },
+    { href: "/admin/authors", icon: "mdi:feather", label: "Authors", separate:false},
+    { href: "/admin/categories", icon: "mdi:tag-multiple", label: "Categories", separate:false },
+    { href: "/admin/users", icon: "mdi:users", label: "Users", separate:true },
+  ]
+
   return (
     <div className="flex flex-col">
       <HeaderAdmin />
@@ -25,14 +35,7 @@ function AdminLayout(children: React.ReactNode) {
                 <Icon icon="mdi:home" width="24" height="24" />
                 Front page
               </a>
-              {[
-                { href: "/admin/dashboard", icon: "mdi:view-dashboard-outline", label: "Dashboard", separate:true },
-                { href: "/admin/medias", icon: "mdi:image", label: "Medias", separate:true },
-                { href: "/admin/books", icon: "mdi:bookshelf", label: "Books", separate:true },
-                { href: "/admin/authors", icon: "mdi:feather", label: "Authors" },
-                { href: "/admin/categories", icon: "mdi:tag-multiple", label: "Categories" },
-                { href: "/admin/users", icon: "mdi:users", label: "Users", separate:true },
-              ].map((item) => (
+              {linkList.map((item) => (
                 <Link key={item.href} href={item.href} className={`btn btn-ghost hover:bg-transparent hover:underline justify-start 
                 ${item.separate ? 
                 'before:content-[""] before:block before:w-full before:h-[1px] before:bg-base-content/25' : 
