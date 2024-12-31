@@ -9,8 +9,7 @@ export type Book = {
  title: string | null
  description: string | null
  categories: Category[]
- authorId: number | null
- author: Author
+ author: Author[]
  reviews: Review[]
  isNew: boolean | null
  isPopular: boolean | null

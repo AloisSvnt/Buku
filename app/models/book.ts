@@ -28,9 +28,11 @@ export default class Book extends BaseModel {
  
   @belongsTo(() => Author)
   declare author: BelongsTo<typeof Author>
- 
-  @column()
-  declare authorId: number | null
+
+  @manyToMany(() => Author, {
+    pivotTable: 'book_authors',
+  })
+  declare authors: ManyToMany<typeof Author>
  
   @manyToMany(() => Category, {
     pivotTable: 'book_categories',
