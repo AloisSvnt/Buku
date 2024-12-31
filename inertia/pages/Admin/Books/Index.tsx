@@ -48,7 +48,7 @@ function Index() {
 
       <div className="flex justify-between items-center px-4">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-neutral no-animation btn-sm w-52 text-base-content flex justify-between focus-visible:rounded-b-none focus:rounded-b-none transition-all duration-200">
+          <div tabIndex={0} role="button" className="btn btn-neutral no-animation btn-sm w-52 text-neutral-content flex justify-between focus-visible:rounded-b-none focus:rounded-b-none transition-all duration-200">
             <Icon icon="mdi:clock" width="24" height="24" />
             Click
             <Icon icon="mdi:arrow-down-drop" width="24" height="24" />
