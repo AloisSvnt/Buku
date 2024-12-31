@@ -3,7 +3,6 @@ import { Icon } from "@iconify/react";
 import { Link } from "@inertiajs/react";
 import HeaderAdmin from "~/components/headers/HeaderAdmin";
 import FooterAdmin from "~/components/footers/FooterAdmin";
-import { sep } from "path";
 
 function AdminLayout(children: React.ReactNode) {
   return (
