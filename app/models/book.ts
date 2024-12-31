@@ -19,53 +19,51 @@ export default class Book extends BaseModel {
 
   @column({ isPrimary: true })
   declare id: number
-
+ 
   @column()
-  declare title: string
-
+  declare title: string | null
+ 
   @column()
-  declare description: string
-
+  declare description: string | null
+ 
+  @belongsTo(() => Author)
+  declare author: BelongsTo<typeof Author>
+ 
   @column()
-  declare categoryId: number
-
+  declare authorId: number | null
+ 
   @manyToMany(() => Category, {
     pivotTable: 'book_categories',
   })
   declare categories: ManyToMany<typeof Category>
-
-  @column()
-  declare authorId: number
-
-  @belongsTo(() => Author)
-  declare author: BelongsTo<typeof Author>
-
+ 
   @hasMany(() => Review)
   declare reviews: HasMany<typeof Review>
-
+ 
   @column()
-  declare isNew: boolean
-
+  declare isNew: boolean | null
+ 
   @column()
-  declare isPopular: boolean
-
+  declare isPopular: boolean | null
+ 
   @column()
-  declare isRecommended: boolean
-
+  declare isRecommended: boolean | null
+ 
   @column()
-  declare isOnSale: boolean
-
+  declare isOnSale: boolean | null
+ 
   @column()
-  declare slug: string
-
+  declare slug: string | null
+ 
   @manyToMany(() => Media, {
     pivotTable: 'book_medias',
   })
   declare media: ManyToMany<typeof Media>
-
+ 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
-
+ 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
-}
+ }
+ 
