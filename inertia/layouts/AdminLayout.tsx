@@ -3,6 +3,7 @@ import { Icon } from "@iconify/react";
 import { Link } from "@inertiajs/react";
 import HeaderAdmin from "~/components/headers/HeaderAdmin";
 import FooterAdmin from "~/components/footers/FooterAdmin";
+import { sep } from "path";
 
 function AdminLayout(children: React.ReactNode) {
   return (
@@ -28,9 +29,14 @@ function AdminLayout(children: React.ReactNode) {
               {[
                 { href: "/admin/dashboard", icon: "mdi:view-dashboard-outline", label: "Dashboard" },
                 { href: "/admin/books", icon: "mdi:bookshelf", label: "Books" },
-                { href: "/admin/users", icon: "mdi:users", label: "Users" },
+                { href: "/admin/authors", icon: "mdi:feather", label: "Authors" },
+                { href: "/admin/categories", icon: "mdi:tag-multiple", label: "Categories" },
+                { href: "/admin/users", icon: "mdi:users", label: "Users", separate:true },
               ].map((item) => (
-                <Link key={item.href} href={item.href} className="btn btn-ghost hover:bg-transparent hover:underline justify-start">
+                <Link key={item.href} href={item.href} className={`btn btn-ghost hover:bg-transparent hover:underline justify-start 
+                ${item.separate ? 
+                'before:content-[""] before:block before:w-full before:h-[1px] before:bg-base-content' : 
+                ''}`}>
                   <Icon icon={item.icon} width="24" height="24" />
                   {item.label}
                 </Link>
