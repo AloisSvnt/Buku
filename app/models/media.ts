@@ -9,6 +9,15 @@ export default class Media extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
+  @column()
+  declare name: string
+
+  @column()
+  declare path: string
+
+  @column()
+  declare altText: string
+
   @manyToMany(() => Book, {
     pivotTable: 'book_medias',
   })
