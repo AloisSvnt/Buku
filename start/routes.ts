@@ -13,6 +13,7 @@ const BookController = () => import('#controllers/book_controller')
 const SessionController = () => import('#controllers/Auth/session_controller')
 const AdminBookController = () => import('#controllers/Admin/book_controller')
 const DashBoardController = () => import('#controllers/Admin/dashboard_controller')
+const AdminCategoryController = () => import('#controllers/Admin/category_controller')
 
 router.on('/').renderInertia('home').use(middleware.global())
 
@@ -68,6 +69,17 @@ router
             router.delete('/:slug', [AdminBookController, 'destroy']).as('admin.book.destroy')
           })
           .prefix('books')
+
+        router
+          .group(() => {
+            router.get('', [AdminCategoryController, 'index']).as('admin.category.index')
+            router.get('/create', [AdminCategoryController, 'create']).as('admin.category.create')
+            router.post('', [AdminCategoryController, 'store']).as('admin.category.store')
+            router.get('/:id/edit', [AdminCategoryController, 'edit']).as('admin.category.edit')
+            router.put('/:id', [AdminCategoryController, 'update']).as('admin.category.update')
+            router.delete('/:id', [AdminCategoryController, 'destroy']).as('admin.category.destroy')
+          })
+          .prefix('categories')
       })
   })
   .prefix('admin')
