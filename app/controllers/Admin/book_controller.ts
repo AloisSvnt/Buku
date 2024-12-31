@@ -37,7 +37,7 @@ export default class BookController {
     const existingBook = await Book.query().apply((scopes) => scopes.existingSlug(slug)).first()
 
     if (existingBook) {
-      const suffix = existingBook.slug.match(/-(\d+)$/)?.[1]
+      const suffix = existingBook.slug ? existingBook.slug.match(/-(\d+)$/)?.[1] : null
       slug = `${slug}-${suffix ? parseInt(suffix) + 1 : 1}`
     }
     bookData.slug = slug
@@ -91,7 +91,7 @@ export default class BookController {
     if (existingBook) {
       const existingBookWithSuffix = await Book.query().apply((scopes) => scopes.existingSlug(slug)).whereNot('id', book.id).first()
       if (existingBookWithSuffix) {
-        const suffixMatch = existingBookWithSuffix.slug.match(/-(\d+)$/)
+        const suffixMatch = existingBookWithSuffix.slug ? existingBookWithSuffix.slug.match(/-(\d+)$/) : null
         const suffix = suffixMatch ? parseInt(suffixMatch[1]) + 1 : 1
         slug = `${slug}-${suffix}`
       } else {
