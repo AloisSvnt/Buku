@@ -30,7 +30,7 @@ router
       })
       .prefix('books')
   })
-  .use(middleware.guest())
+  .use(middleware.global())
 
 router
   .group(() => {
