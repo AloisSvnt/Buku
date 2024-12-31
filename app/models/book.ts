@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon'
-import { scope, BaseModel, column, belongsTo, hasMany } from '@adonisjs/lucid/orm'
-import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
+import { scope, BaseModel, column, belongsTo, hasMany, manyToMany } from '@adonisjs/lucid/orm'
+import type { BelongsTo, HasMany, ManyToMany } from '@adonisjs/lucid/types/relations'
 
 import Category from '#models/category'
 import Author from '#models/author'
@@ -28,8 +28,10 @@ export default class Book extends BaseModel {
   @column()
   declare categoryId: number
 
-  @belongsTo(() => Category)
-  declare category: BelongsTo<typeof Category>
+  @manyToMany(() => Category, {
+    pivotTable: 'book_categories',
+  })
+  declare categories: ManyToMany<typeof Category>
 
   @column()
   declare authorId: number
