@@ -42,7 +42,11 @@ function Index() {
   return (
     <div className="flex flex-col flex-wrap w-full gap-3">
       <div className="shadow-lg w-full h-16 flex justify-between items-center px-4 bg-base-300">
-        Books
+        <p className='text-2xl leading-4'>
+          Books
+          <br/>
+          <span className='text-xs uppercase'>List</span>
+        </p>
         <Link href="/admin/books/create" className="btn btn-primary text-primary-content">Add new</Link>
       </div>
 
