@@ -21,6 +21,9 @@ export default class extends BaseSchema {
   }
 
   async down() {
-    this.schema.dropTable(this.tableName)
+    const hasTable = await this.db.schema.hasTable(this.tableName)
+    if (hasTable) {
+      this.schema.dropTable(this.tableName)
+    }
   }
 }
