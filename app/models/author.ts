@@ -1,5 +1,8 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@adonisjs/lucid/orm'
+import { BaseModel, column, manyToMany } from '@adonisjs/lucid/orm'
+import type { ManyToMany } from '@adonisjs/lucid/types/relations'
+
+import Media from '#models/media'
 
 export default class Author extends BaseModel {
   @column({ isPrimary: true })
@@ -10,6 +13,11 @@ export default class Author extends BaseModel {
 
   @column()
   declare bio: string
+
+  @manyToMany(() => Media, {
+    pivotTable: 'author_medias',
+  })
+  declare media: ManyToMany<typeof Media>
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

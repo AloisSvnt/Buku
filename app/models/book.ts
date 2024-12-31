@@ -5,6 +5,7 @@ import type { BelongsTo, HasMany, ManyToMany } from '@adonisjs/lucid/types/relat
 import Category from '#models/category'
 import Author from '#models/author'
 import Review from '#models/review'
+import Media from '#models/media'
 
 export default class Book extends BaseModel {
   
@@ -56,6 +57,11 @@ export default class Book extends BaseModel {
 
   @column()
   declare slug: string
+
+  @manyToMany(() => Media, {
+    pivotTable: 'book_medias',
+  })
+  declare media: ManyToMany<typeof Media>
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
