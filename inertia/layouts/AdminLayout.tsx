@@ -27,6 +27,7 @@ function AdminLayout(children: React.ReactNode) {
               </a>
               {[
                 { href: "/admin/dashboard", icon: "mdi:view-dashboard-outline", label: "Dashboard", separate:true },
+                { href: "/admin/medias", icon: "mdi:image", label: "Medias", separate:true },
                 { href: "/admin/books", icon: "mdi:bookshelf", label: "Books", separate:true },
                 { href: "/admin/authors", icon: "mdi:feather", label: "Authors" },
                 { href: "/admin/categories", icon: "mdi:tag-multiple", label: "Categories" },
