@@ -27,7 +27,7 @@ export default class CategoryController {
     ])
     await Category.create(categoryData)
     session.flash({ success: 'Category created successfully' })
-    return response.redirect().toRoute('categories.index')
+    return response.redirect().toRoute('admin.category.index')
   }
 
   /**
@@ -56,7 +56,7 @@ export default class CategoryController {
   async update({ params, request, response, session }: HttpContext) {
     const category = await Category.find(params.id)
     if (!category) {
-      return response.redirect().toRoute('categories.index')
+      return response.redirect().toRoute('admin.category.index')
     }
     const categoryData = request.only([
       'name',
@@ -65,7 +65,7 @@ export default class CategoryController {
     category.merge(categoryData)
     await category.save()
     session.flash({ success: 'Category updated successfully' })
-    return response.redirect().toRoute('categories.index')
+    return response.redirect().toRoute('admin.category.index')
 
   }
 
@@ -75,10 +75,10 @@ export default class CategoryController {
   async destroy({ params, response, session }: HttpContext) {
     const category = await Category.find(params.id)
     if (!category) {
-      return response.redirect().toRoute('categories.index')
+      return response.redirect().toRoute('admin.category.index')
     }
     await category.delete()
     session.flash({ success: 'Category deleted successfully' })
-    return response.redirect().toRoute('categories.index')
+    return response.redirect().toRoute('admin.category.index')
   }
 }
