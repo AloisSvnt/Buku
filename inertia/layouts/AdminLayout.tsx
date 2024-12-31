@@ -27,14 +27,14 @@ function AdminLayout(children: React.ReactNode) {
               </a>
               {[
                 { href: "/admin/dashboard", icon: "mdi:view-dashboard-outline", label: "Dashboard", separate:true },
-                { href: "/admin/books", icon: "mdi:bookshelf", label: "Books" },
+                { href: "/admin/books", icon: "mdi:bookshelf", label: "Books", separate:true },
                 { href: "/admin/authors", icon: "mdi:feather", label: "Authors" },
                 { href: "/admin/categories", icon: "mdi:tag-multiple", label: "Categories" },
                 { href: "/admin/users", icon: "mdi:users", label: "Users", separate:true },
               ].map((item) => (
                 <Link key={item.href} href={item.href} className={`btn btn-ghost hover:bg-transparent hover:underline justify-start 
                 ${item.separate ? 
-                'before:content-[""] before:block before:w-full before:h-[1px] before:bg-base-content' : 
+                'before:content-[""] before:block before:w-full before:h-[1px] before:bg-base-content/25' : 
                 ''}`}>
                   <Icon icon={item.icon} width="24" height="24" />
                   {item.label}
