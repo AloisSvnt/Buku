@@ -6,8 +6,8 @@ import { Media } from '#types/media'
 
 export type Book = {
  id: number
- title: string | null
- description: string | null
+ title: string
+ description: string
  categories: Category[]
  author: Author[]
  reviews: Review[]

@@ -21,11 +21,11 @@ export default class Book extends BaseModel {
   declare id: number
  
   @column()
-  declare title: string | null
+  declare title: string 
  
   @column()
-  declare description: string | null
- 
+  declare description: string
+  
   @belongsTo(() => Author)
   declare author: BelongsTo<typeof Author>
 
