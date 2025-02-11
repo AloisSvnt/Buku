@@ -7,7 +7,7 @@ function Create() {
     description: '',
     categoryId: '',
     authorId: '',
-    isNew: false,
+    isNew: true,
     isPopular: false,
     isRecommended: false,
     isOnSale: false,
@@ -19,8 +19,8 @@ function Create() {
   };
 
   return (
-    <div className="flex flex-col flex-wrap w-full gap-3">
-      <div className="shadow-lg w-full h-16 flex justify-between items-center px-4 bg-base-300">
+    <div className="flex flex-wrap w-full">
+      <div className="shadow-lg w-full min-h-16 flex justify-between items-center px-4 bg-base-300">
         <p className='text-2xl leading-4'>
           Books
           <br/>
@@ -28,7 +28,7 @@ function Create() {
         </p>
       </div>
 
-      <div className="flex justify-between items-center px-4 w-3/4">
+      <div className="flex justify-between items-center px-4 w-3/4 flex-1">
         <form onSubmit={handleSubmit} className='w-full max-w-4xl flex flex-wrap gap-x-4'>
           <label className="form-control flex-1">
             <div className="label">
